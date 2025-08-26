@@ -1,12 +1,13 @@
 export default {
     async login({ commit }, payload) {
+        console.log(process.env);
         const params = {
             email: payload.email,
             password: payload.password,
             returnSecureToken: true,
         };
 
-        const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAlwBgXH5OcFcsUvq4orU97CRCj3kKZn6c`, {
+        const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.VUE_APP_FIREBASS_API_KEY}`, {
             method: 'POST',
             body: JSON.stringify(params),
         });
@@ -33,7 +34,7 @@ export default {
             returnSecureToken: true,
         };
 
-        const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAlwBgXH5OcFcsUvq4orU97CRCj3kKZn6c`, {
+        const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.VUE_APP_FIREBASS_API_KEY}`, {
             method: 'POST',
             body: JSON.stringify(params),
         });
